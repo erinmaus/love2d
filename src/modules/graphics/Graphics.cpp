@@ -1691,25 +1691,25 @@ void Graphics::setPerspective(float fieldOfView, float aspectRatio, float near, 
 
 void Graphics::project(const Vector3 &worldSpacePoint, Vector3 &result)
 {
-	Matrix4 modelViewMatrix = transformStack.back() * projectionMatrix;
-	modelViewMatrix.transformXYZ(&result, &worldSpacePoint, 1);
+	Matrix4 modelViewProjectionMatrix = projectionMatrix * transformStack.back();
+	modelViewProjectionMatrix.transformXYZ(&result, &worldSpacePoint, 1);
 
-	result.x = (result.x + 1.0f)  * 0.5f * width;
+	result.x = (result.x + 1.0f) * 0.5f * width;
 	result.y = (result.y + 1.0f) * 0.5f * height;
 	result.z = (result.z + 1.0f) / 2.0f;
 }
 
 void Graphics::unproject(const Vector3 &screenSpacePoint, Vector3 &result)
 {
-	Matrix4 modelViewMatrix = transformStack.back() * projectionMatrix;
-	Matrix4 inverseModelViewMatrix = modelViewMatrix.inverse();
+	Matrix4 modelViewProjectionMatrix = projectionMatrix * transformStack.back();
+	Matrix4 inverseModelViewProjectionMatrix = modelViewProjectionMatrix.inverse();
 
 	Vector3 normalizedScreenSpacePoint;
 	normalizedScreenSpacePoint.x = (screenSpacePoint.x / width - 0.5f) * 2.0f;
-	normalizedScreenSpacePoint.y = (screenSpacePoint.y / height - 0.5f) * 2.0f;
-	normalizedScreenSpacePoint.z = (normalizedScreenSpacePoint.z - 0.5f) * 2.0f;
+	normalizedScreenSpacePoint.y = ((height - screenSpacePoint.y) / height - 0.5f) * 2.0f;
+	normalizedScreenSpacePoint.z = (screenSpacePoint.z - 0.5f) * 2.0f;
 
-	modelViewMatrix.transformXYZ(&result, &normalizedScreenSpacePoint, 1);
+	inverseModelViewProjectionMatrix.transformXYZ(&result, &normalizedScreenSpacePoint, 1);
 }
 
 void Graphics::setOrtho(int w, int h, bool flipY)
