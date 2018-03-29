@@ -19,6 +19,7 @@
  **/
 
 #include "Matrix.h"
+#include "Vector.h"
 #include "common/config.h"
 
 // STD
@@ -493,57 +494,37 @@ Matrix4 Matrix4::perspective(float fieldOfView, float aspectRatio, float near, f
 	return m;
 }
 
-static void crossProduct3(float x, float y, float z, float i, float j, float k, float& s, float& t, float& r)
-{
-	s = y * k - z * j;
-	t = z * i - x * k;
-	r = x * j - y * i;
-}
-
-static float dotProduct3(float x, float y, float z, float i, float j, float k)
-{
-	return x * i + y * j + z * k;
-}
-
-static void normalize3(float& x, float& y, float& z)
-{
-	float length = std::sqrt(x * x + y * y + z * z);
-	x /= length;
-	y /= length;
-	z /= length;
-}
-
 Matrix4 Matrix4::lookAt(float eyeX, float eyeY, float eyeZ, float targetX, float targetY, float targetZ, float upX, float upY, float upZ)
 {
 	Matrix4 m;
 
-	float lookX, lookY, lookZ;
-	lookX = targetX - eyeX;
-	lookY = targetY - eyeY;
-	lookZ = targetZ - eyeZ;
-	normalize3(lookX, lookY, lookZ);
+	Vector3 eye(eyeX, eyeY, eyeZ);
+	Vector3 target(targetX, targetY, targetZ);
+	Vector3 up(upX, upY, upZ);
 
-	float rightX, rightY, rightZ;
-	crossProduct3(upX, upY, upZ, lookX, lookY, lookZ, rightX, rightY, rightZ);
-	normalize3(rightX, rightY, rightZ);
+	Vector3 look = target - eye;
+	look.normalize();
 
-	crossProduct3(lookX, lookY, lookZ, rightX, rightY, rightZ, upX, upY, upZ);
-	normalize3(upX, upY, upZ);
+	Vector3 right = Vector3::cross(up, look);
+	right.normalize();
 
-	m.e[0] = rightX;
-	m.e[4] = rightY;
-	m.e[8] = rightZ;
-	m.e[12] = -dotProduct3(eyeX, eyeY, eyeZ, rightX, rightY, rightZ);
+	up = Vector3::cross(look, right);
+	up.normalize();
 
-	m.e[1] = upX;
-	m.e[5] = upY;
-	m.e[9] = upZ;
-	m.e[13] = -dotProduct3(eyeX, eyeY, eyeZ, upX, upY, upZ);
+	m.e[0] = right.x;
+	m.e[4] = right.y;
+	m.e[8] = right.z;
+	m.e[12] = -Vector3::dot(eye, right);
 
-	m.e[2] = lookX;
-	m.e[6] = lookY;
-	m.e[10] = lookZ;
-	m.e[14] = -dotProduct3(eyeX, eyeY, eyeZ, lookX, lookY, lookZ);
+	m.e[1] = up.x;
+	m.e[5] = up.y;
+	m.e[9] = up.z;
+	m.e[13] = -Vector3::dot(eye, up);
+
+	m.e[2] = look.x;
+	m.e[6] = look.y;
+	m.e[10] = look.z;
+	m.e[14] = -Vector3::dot(eye, look);
 
 	return m;
 }
