@@ -183,6 +183,17 @@ public:
 	void setTransformation(float x, float y, float angle, float sx, float sy, float ox, float oy, float kx, float ky);
 
 	/**
+	  * Constructs a transformation from a quaternion. The components are
+	  * normalized before the transformation matrix is built.
+	  *
+	  * @param x The x component of the quaternion.
+	  * @param y The y component of the quaternion.
+	  * @param z The z component of the quaternion.
+	  * @param w The w component of the quaternion.
+	  **/
+	void fromQuaternion(float x, float y, float z, float w);
+
+	/**
 	 * Multiplies this Matrix with a translation.
 	 * @param x Translation along x-axis.
 	 * @param y Translation along y-axis.

@@ -257,6 +257,29 @@ void Matrix4::setTransformation(float x, float y, float angle, float sx, float s
 	e[13] = y - ox * e[1] - oy * e[5];
 }
 
+void Matrix4::fromQuaternion(float x, float y, float z, float w)
+{
+	float length = std::sqrt(x * x + y * y + z * z + w * w);
+	if (length != 0.0f)
+	{
+		x /= length;
+		y /= length;
+		z /= length;
+		w /= length;
+	}
+
+	setIdentity();
+	e[0] = 1.0f - 2.0f * (y * y) - 2.0f * (z * z);
+	e[4] = 2.0f * x * y - 2.0f * z * w;
+	e[8] = 2.0f * x * z + 2.0f * y * w;
+	e[1] = 2.0f * x * y + 2.0f * z * w;
+	e[5] = 1.0f - 2.0f * (x * x) - 2.0f * (z * z);
+	e[9] = 2.0f * y * z - 2.0f * x * w;
+	e[2] = 2.0f * x * z - 2.0f * y * w;
+	e[6] = 2.0f * y * z + 2.0f * x * w;
+	e[10] = 1.0f - 2.0f * (x * x) + 2.0f * (y * y);
+}
+
 void Matrix4::translate(float x, float y)
 {
 	Matrix4 t;

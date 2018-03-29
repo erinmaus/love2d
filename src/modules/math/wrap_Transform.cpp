@@ -141,6 +141,18 @@ int w_Transform_setTransformation(lua_State *L)
 	return 1;
 }
 
+int w_Transform_fromQuaternion(lua_State* L)
+{
+	Transform *t = luax_checktransform(L, 1);
+	float x = (float) luaL_checknumber(L, 2);
+	float y = (float) luaL_checknumber(L, 3);
+	float z = (float) luaL_checknumber(L, 4);
+	float w = (float) luaL_checknumber(L, 5);
+	t->fromQuaternion(x, y, z, w);
+	lua_pushvalue(L, 1);
+	return 1;
+}
+
 int w_Transform_setMatrix(lua_State *L)
 {
 	Transform *t = luax_checktransform(L, 1);
@@ -316,6 +328,7 @@ static const luaL_Reg functions[] =
 	{ "shear", w_Transform_shear },
 	{ "reset", w_Transform_reset },
 	{ "setTransformation", w_Transform_setTransformation },
+	{ "fromQuaternion", w_Transform_fromQuaternion },
 	{ "setMatrix", w_Transform_setMatrix },
 	{ "getMatrix", w_Transform_getMatrix },
 	{ "transformPoint", w_Transform_transformPoint },

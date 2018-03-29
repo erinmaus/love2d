@@ -122,6 +122,12 @@ void Transform::setTransformation(float x, float y, float a, float sx, float sy,
 	inverseDirty = true;
 }
 
+void Transform::fromQuaternion(float x, float y, float z, float w)
+{
+	matrix.fromQuaternion(x, y, z, w);
+	inverseDirty = true;
+}
+
 love::Vector2 Transform::transformPoint(love::Vector2 p) const
 {
 	love::Vector2 result;
