@@ -153,6 +153,18 @@ int w_Transform_fromQuaternion(lua_State* L)
 	return 1;
 }
 
+int w_Transform_applyQuaternion(lua_State* L)
+{
+	Transform *t = luax_checktransform(L, 1);
+	float x = (float)luaL_checknumber(L, 2);
+	float y = (float)luaL_checknumber(L, 3);
+	float z = (float)luaL_checknumber(L, 4);
+	float w = (float)luaL_checknumber(L, 5);
+	t->applyQuaternion(x, y, z, w);
+	lua_pushvalue(L, 1);
+	return 1;
+}
+
 int w_Transform_setMatrix(lua_State *L)
 {
 	Transform *t = luax_checktransform(L, 1);
@@ -285,25 +297,29 @@ int w_Transform_getMatrix(lua_State *L)
 int w_Transform_transformPoint(lua_State *L)
 {
 	Transform *t = luax_checktransform(L, 1);
-	love::Vector2 p;
+	love::Vector3 p;
 	p.x = (float) luaL_checknumber(L, 2);
 	p.y = (float) luaL_checknumber(L, 3);
+	p.z = (float) luaL_optnumber(L, 4, 0);
 	p = t->transformPoint(p);
 	lua_pushnumber(L, p.x);
 	lua_pushnumber(L, p.y);
-	return 2;
+	lua_pushnumber(L, p.z);
+	return 3;
 }
 
 int w_Transform_inverseTransformPoint(lua_State *L)
 {
 	Transform *t = luax_checktransform(L, 1);
-	love::Vector2 p;
+	love::Vector3 p;
 	p.x = (float) luaL_checknumber(L, 2);
 	p.y = (float) luaL_checknumber(L, 3);
+	p.z = (float) luaL_optnumber(L, 4, 0);
 	p = t->inverseTransformPoint(p);
 	lua_pushnumber(L, p.x);
 	lua_pushnumber(L, p.y);
-	return 2;
+	lua_pushnumber(L, p.z);
+	return 3;
 }
 
 int w_Transform__mul(lua_State *L)
@@ -329,6 +345,7 @@ static const luaL_Reg functions[] =
 	{ "reset", w_Transform_reset },
 	{ "setTransformation", w_Transform_setTransformation },
 	{ "fromQuaternion", w_Transform_fromQuaternion },
+	{ "applyQuaternion", w_Transform_applyQuaternion },
 	{ "setMatrix", w_Transform_setMatrix },
 	{ "getMatrix", w_Transform_getMatrix },
 	{ "transformPoint", w_Transform_transformPoint },

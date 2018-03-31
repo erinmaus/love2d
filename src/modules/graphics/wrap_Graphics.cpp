@@ -2828,17 +2828,17 @@ int w_pop(lua_State *L)
 
 int w_rotate(lua_State *L)
 {
-	if (lua_gettop(L) == 2)
+	if (lua_gettop(L) == 1)
 	{
 		float angle = (float)luaL_checknumber(L, 2);
 		instance()->rotate(angle);
 	}
 	else
 	{
-		float x = (float)luaL_checknumber(L, 2);
-		float y = (float)luaL_checknumber(L, 3);
-		float z = (float)luaL_checknumber(L, 4);
-		float angle = (float)luaL_checknumber(L, 5);
+		float x = (float)luaL_checknumber(L, 1);
+		float y = (float)luaL_checknumber(L, 2);
+		float z = (float)luaL_checknumber(L, 3);
+		float angle = (float)luaL_checknumber(L, 4);
 		instance()->rotate(x, y, z, angle);
 	}
 	return 0;

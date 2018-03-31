@@ -270,15 +270,17 @@ void Matrix4::fromQuaternion(float x, float y, float z, float w)
 	}
 
 	setIdentity();
-	e[0] = 1.0f - 2.0f * (y * y) - 2.0f * (z * z);
-	e[4] = 2.0f * x * y - 2.0f * z * w;
-	e[8] = 2.0f * x * z + 2.0f * y * w;
-	e[1] = 2.0f * x * y + 2.0f * z * w;
-	e[5] = 1.0f - 2.0f * (x * x) - 2.0f * (z * z);
-	e[9] = 2.0f * y * z - 2.0f * x * w;
-	e[2] = 2.0f * x * z - 2.0f * y * w;
-	e[6] = 2.0f * y * z + 2.0f * x * w;
-	e[10] = 1.0f - 2.0f * (x * x) + 2.0f * (y * y);
+	e[0] = 1.0f - 2.0f * (y * y + z * z);
+	e[1] = 2.0f * (x * y + z * w);
+	e[2] = 2.0f * (x * z - y * w);
+	e[4] = 2.0f * (x * y - z * w);
+	e[5] = 1.0f - 2.0f * (x * x + z * z);
+	e[6] = 2.0f * (z * y + x * w);
+	e[8] = 2.0f * (x * z + y * w);
+	e[9] = 2.0f * (y * z - x * w);
+	e[10] = 1.0f - 2.0f * (x * x + y * y);
+	e[11] = 0.0f;
+
 }
 
 void Matrix4::translate(float x, float y)
