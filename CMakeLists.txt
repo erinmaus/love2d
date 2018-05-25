@@ -66,6 +66,10 @@ endif()
 
 message(STATUS "Target platform: ${LOVE_TARGET_PLATFORM}")
 
+if(POLICY CMP0072)
+	cmake_policy(SET CMP0072 NEW)
+endif()
+
 find_package(OpenGL)
 
 if(MEGA)
@@ -174,6 +178,8 @@ Please see http://bitbucket.org/rude/megasource
 	find_package(SDL2 REQUIRED)
 	find_package(Theora REQUIRED)
 	find_package(Vorbis REQUIRED)
+	find_package(ZLIB REQUIRED)
+	find_package(Ogg REQUIRED)
 
 	# required for enet
 	add_definitions(-D HAS_SOCKLEN_T)
@@ -182,6 +188,11 @@ Please see http://bitbucket.org/rude/megasource
 		${SDL2_INCLUDE_DIR}
 		${FREETYPE_INCLUDE_DIRS}
 		${VORBIS_INCLUDE_DIR}
+		${OPENAL_INCLUDE_DIR}
+		${ZLIB_INCLUDE_DIRS}
+		${MODPLUG_INCLUDE_DIR}
+		${OGG_INCLUDE_DIR}
+		${THEORA_INCLUDE_DIR}
 	)
 
 	set(LOVE_LINK_LIBRARIES
@@ -194,13 +205,19 @@ Please see http://bitbucket.org/rude/megasource
 		${THEORADEC_LIBRARY}
 		${VORBISFILE_LIBRARY}
 		${LOVE_LUA_LIBRARY}
+		${OGG_LIBRARY}
+		${ZLIB_LIBRARY}
 	)
-	
+
 	if(LOVE_MPG123)
 		find_package(MPG123 REQUIRED)
 		set(LOVE_LINK_LIBRARIES
 			${LOVE_LINK_LIBRARIES}
 			${MPG123_LIBRARY}
+		)
+		set(LOVE_INCLUDE_DIRS
+			${LOVE_INCLUDE_DIRS}
+			${MPG123_INCLUDE_DIR}
 		)
 	endif()
 
@@ -1853,7 +1870,7 @@ set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/readme.md")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/license.txt")
 
 set(CPACK_NSIS_EXECUTABLES_DIRECTORY .)
-set(CPACK_NSIS_PACKAGE_NAME "LÖVE")
+set(CPACK_NSIS_PACKAGE_NAME "LOVE")
 set(CPACK_NSIS_DISPLAY_NAME "LOVE ${LOVE_VERSION_STR}")
 set(CPACK_NSIS_MODIFY_PATH OFF)
 
@@ -1874,7 +1891,7 @@ set(NSIS_MUI_ICON "${CMAKE_CURRENT_SOURCE_DIR}/extra/nsis\\\\love.ico")
 set(NSIS_MUI_UNICON "${CMAKE_CURRENT_SOURCE_DIR}/extra/nsis\\\\love.ico")
 
 set(CPACK_NSIS_INSTALLER_MUI_ICON_CODE "
-	!define MUI_WELCOMEPAGE_TITLE \\\"LÖVE ${LOVE_VERSION_STR} Setup\\\"
+	!define MUI_WELCOMEPAGE_TITLE \\\"LOVE ${LOVE_VERSION_STR} Setup\\\"
 	!define MUI_WELCOMEFINISHPAGE_BITMAP \\\"${NSIS_LEFT_BMP}\\\"
 	!define MUI_HEADERIMAGE_BITMAP \\\"${NSIS_TOP_BMP}\\\"
 	!define MUI_ICON \\\"${NSIS_MUI_ICON}\\\"
