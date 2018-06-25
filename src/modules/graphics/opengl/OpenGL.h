@@ -258,6 +258,12 @@ public:
 	float getPointSize() const;
 
 	/**
+	  * Sets the global line width.
+	  **/
+	void setLineWidth(float size);
+	float getLineWidth() const;
+
+	/**
 	 * State-tracked version of glEnable.
 	 **/
 	void setEnableState(EnableState state, bool enable);
@@ -462,6 +468,7 @@ private:
 		Rect scissor;
 
 		float pointSize;
+		float lineWidth;
 
 		bool depthWritesEnabled = true;
 

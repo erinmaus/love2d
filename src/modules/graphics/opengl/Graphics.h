@@ -101,6 +101,7 @@ public:
 	void setBlendMode(BlendMode mode, BlendAlpha alphamode) override;
 
 	void setPointSize(float size) override;
+	void setLineWidth(float size) override;
 
 	void setWireframe(bool enable) override;
 

@@ -306,6 +306,7 @@ static StringMap<PrimitiveType, PRIMITIVE_MAX_ENUM>::Entry primitiveTypeEntries[
 	{ "strip",     PRIMITIVE_TRIANGLE_STRIP },
 	{ "triangles", PRIMITIVE_TRIANGLES      },
 	{ "points",    PRIMITIVE_POINTS         },
+	{ "lines",     PRIMITIVE_LINES          },
 };
 
 static StringMap<PrimitiveType, PRIMITIVE_MAX_ENUM> primitiveTypes(primitiveTypeEntries, sizeof(primitiveTypeEntries));

@@ -1309,6 +1309,15 @@ void Graphics::setPointSize(float size)
 	states.back().pointSize = size;
 }
 
+void Graphics::setLineWidth(float size)
+{
+	if (streamBufferState.primitiveMode == PRIMITIVE_LINES)
+		flushStreamDraws();
+
+	gl.setLineWidth(size * getCurrentDPIScale());
+	states.back().lineWidth = size;
+}
+
 void Graphics::setWireframe(bool enable)
 {
 	// Not supported in OpenGL ES.

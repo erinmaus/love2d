@@ -383,6 +383,7 @@ void Graphics::restoreState(const DisplayState &s)
 	setLineJoin(s.lineJoin);
 
 	setPointSize(s.pointSize);
+	setLineWidth(s.lineWidth);
 
 	if (s.scissor)
 		setScissor(s.scissorRect);
@@ -425,6 +426,9 @@ void Graphics::restoreStateChecked(const DisplayState &s)
 
 	if (s.pointSize != cur.pointSize)
 		setPointSize(s.pointSize);
+
+	if (s.lineWidth != cur.lineWidth)
+		setLineWidth(s.lineWidth);
 
 	if (s.scissor != cur.scissor || (s.scissor && !(s.scissorRect == cur.scissorRect)))
 	{
@@ -931,11 +935,6 @@ void Graphics::getDefaultMipmapFilter(Texture::FilterMode *filter, float *sharpn
 {
 	*filter = Texture::defaultMipmapFilter;
 	*sharpness = Texture::defaultMipmapSharpness;
-}
-
-void Graphics::setLineWidth(float width)
-{
-	states.back().lineWidth = width;
 }
 
 void Graphics::setLineStyle(Graphics::LineStyle style)

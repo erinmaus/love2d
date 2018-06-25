@@ -566,6 +566,8 @@ GLenum OpenGL::getGLPrimitiveType(PrimitiveType type)
 		return GL_TRIANGLE_FAN;
 	case PRIMITIVE_POINTS:
 		return GL_POINTS;
+	case PRIMITIVE_LINES:
+		return GL_LINES;
 	case PRIMITIVE_MAX_ENUM:
 		return GL_ZERO;
 	}
@@ -795,6 +797,19 @@ void OpenGL::setPointSize(float size)
 float OpenGL::getPointSize() const
 {
 	return state.pointSize;
+}
+
+void OpenGL::setLineWidth(float size)
+{
+	if (GLAD_VERSION_1_0)
+		glLineWidth(size);
+
+	state.lineWidth = size;
+}
+
+float OpenGL::getLineWidth() const
+{
+	return state.lineWidth;
 }
 
 void OpenGL::setEnableState(EnableState enablestate, bool enable)

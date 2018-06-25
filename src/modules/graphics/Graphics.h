@@ -674,11 +674,6 @@ public:
 	void setDefaultMipmapFilter(Texture::FilterMode filter, float sharpness);
 	void getDefaultMipmapFilter(Texture::FilterMode *filter, float *sharpness) const;
 
-	/**
-	 * Sets the line width.
-	 * @param width The new width of the line.
-	 **/
-	void setLineWidth(float width);
 	float getLineWidth() const;
 
 	/**
@@ -703,6 +698,11 @@ public:
 	 * Gets the point size.
 	 **/
 	float getPointSize() const;
+
+	/**
+	 * Sets the size of points.
+	 **/
+	virtual void setLineWidth(float size) = 0;
 
 	/**
 	 * Sets whether graphics will be drawn as wireframe lines instead of filled
