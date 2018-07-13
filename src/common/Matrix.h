@@ -279,6 +279,11 @@ public:
 	Matrix4 inverse() const;
 
 	/**
+	  * Computes and returns the transpose of the matrix.
+	  */
+	Matrix4 transpose() const;
+
+	/**
 	 * Creates a new orthographic projection matrix.
 	 **/
 	static Matrix4 ortho(float left, float right, float bottom, float top, float near, float far);

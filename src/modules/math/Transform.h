@@ -52,6 +52,7 @@ public:
 
 	Transform *clone();
 	Transform *inverse();
+	Transform *inverseTranspose();
 
 	void apply(Transform *other);
 

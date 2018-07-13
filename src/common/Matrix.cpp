@@ -464,6 +464,23 @@ Matrix4 Matrix4::inverse() const
 	return inv;
 }
 
+Matrix4 Matrix4::transpose() const
+{
+	Matrix4 m;
+
+	for (int j = 0; j < 4; ++j)
+	{
+		for (int i = 0; i < 4; ++i)
+		{
+			int a = j * 4 + i;
+			int b = i * 4 + j;
+			m.e[a] = e[b];
+		}
+	}
+
+	return m;
+}
+
 Matrix4 Matrix4::ortho(float left, float right, float bottom, float top, float near, float far)
 {
 	Matrix4 m;

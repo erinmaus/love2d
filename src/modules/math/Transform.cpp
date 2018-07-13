@@ -62,6 +62,11 @@ Transform *Transform::inverse()
 	return new Transform(getInverseMatrix());
 }
 
+Transform *Transform::inverseTranspose()
+{
+	return new Transform(getInverseMatrix().transpose());
+}
+
 void Transform::apply(Transform *other)
 {
 	matrix *= other->getMatrix();
