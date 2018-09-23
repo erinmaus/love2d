@@ -125,6 +125,59 @@ int w_Transform_shear(lua_State *L)
 	return 1;
 }
 
+int w_Transform_lookAt(lua_State *L)
+{
+	Transform *t = luax_checktransform(L, 1);
+	float eyeX = (float)luaL_checknumber(L, 2);
+	float eyeY = (float)luaL_checknumber(L, 3);
+	float eyeZ = (float)luaL_checknumber(L, 4);
+	float targetX = (float)luaL_checknumber(L, 5);
+	float targetY = (float)luaL_checknumber(L, 6);
+	float targetZ = (float)luaL_checknumber(L, 7);
+	float positionX = (float)luaL_checknumber(L, 9);
+	float positionY = (float)luaL_checknumber(L, 9);
+	float positionZ = (float)luaL_checknumber(L, 10);
+	t->lookAt(eyeX, eyeY, eyeZ, targetX, targetY, targetZ, positionX, positionY, positionZ);
+
+	return 0;
+}
+
+int w_Transform_perspective(lua_State *L)
+{
+	Transform *t = luax_checktransform(L, 1);
+	float fieldOfView = (float)luaL_checknumber(L, 2);
+	float aspectRatio = (float)luaL_checknumber(L, 3);
+	float near = (float)luaL_checknumber(L, 4);
+	float far = (float)luaL_checknumber(L, 5);
+
+	if (near > far)
+	{
+		luaL_error(L, "near (%f) is greater than far (%f)", near, far);
+	}
+
+	if (near <= 0.0f)
+	{
+		luaL_error(L, "near (%f) is not greater than zero", near);
+	}
+
+	t->perspective(fieldOfView, aspectRatio, near, far);
+	return 0;
+}
+
+int w_Transform_ortho(lua_State* L)
+{
+	Transform *t = luax_checktransform(L, 1);
+	float left = (float)luaL_checknumber(L, 2);
+	float right = (float)luaL_checknumber(L, 3);
+	float top = (float)luaL_checknumber(L, 4);
+	float bottom = (float)luaL_checknumber(L, 5);
+	float near = (float)luaL_checknumber(L, 6);
+	float far = (float)luaL_checknumber(L, 7);
+
+	t->ortho(left, right, top, bottom, near, far);
+	return 0;
+}
+
 int w_Transform_reset(lua_State *L)
 {
 	Transform *t = luax_checktransform(L, 1);
@@ -331,6 +384,21 @@ int w_Transform_inverseTransformPoint(lua_State *L)
 	return 3;
 }
 
+int w_Transform_boxInsideFrustum(lua_State* L)
+{
+	Transform *t = luax_checktransform(L, 1);
+	Vector3 min, max;
+	min.x = (float) luaL_checknumber(L, 2);
+	min.y = (float) luaL_checknumber(L, 3);
+	min.z = (float) luaL_checknumber(L, 4);
+	max.x = (float) luaL_checknumber(L, 5);
+	max.y = (float) luaL_checknumber(L, 6);
+	max.z = (float) luaL_checknumber(L, 7);
+
+	lua_pushboolean(L, t->insideFrustum(min, max));
+	return 1;
+}
+
 int w_Transform__mul(lua_State *L)
 {
 	Transform *t1 = luax_checktransform(L, 1);
@@ -352,6 +420,9 @@ static const luaL_Reg functions[] =
 	{ "rotate", w_Transform_rotate },
 	{ "scale", w_Transform_scale },
 	{ "shear", w_Transform_shear },
+	{ "lookAt", w_Transform_lookAt },
+	{ "perspective", w_Transform_perspective },
+	{ "ortho", w_Transform_ortho },
 	{ "reset", w_Transform_reset },
 	{ "setTransformation", w_Transform_setTransformation },
 	{ "fromQuaternion", w_Transform_fromQuaternion },
@@ -360,6 +431,7 @@ static const luaL_Reg functions[] =
 	{ "getMatrix", w_Transform_getMatrix },
 	{ "transformPoint", w_Transform_transformPoint },
 	{ "inverseTransformPoint", w_Transform_inverseTransformPoint },
+	{ "boxInsideFrustum", w_Transform_boxInsideFrustum },
 	{ "__mul", w_Transform__mul },
 	{ 0, 0 }
 };

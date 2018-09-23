@@ -1750,6 +1750,11 @@ void Graphics::setOrtho(int w, int h, bool flipY)
 	}
 }
 
+void Graphics::setProjection(const Matrix4 &matrix)
+{
+	projectionMatrix = matrix;
+}
+
 void Graphics::applyTransform(love::math::Transform *transform)
 {
 	Matrix4 &m = transformStack.back();

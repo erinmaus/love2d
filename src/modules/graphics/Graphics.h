@@ -864,6 +864,7 @@ public:
 	void lookAt(float eyeX, float eyeY, float eyeZ, float targetX, float targetY, float targetZ, float upX, float upY, float upZ);
 	void setPerspective(float fieldOfView, float aspectRatio, float near, float far);
 	void setOrtho(int w, int h, bool flipY);
+	void setProjection(const Matrix4 &matrix);
 	
 	/**
 	 * Projects a 3-dimensional point in world space to screen-space.

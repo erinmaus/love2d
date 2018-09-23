@@ -65,6 +65,10 @@ public:
 	void shear(float x, float y);
 	void shear(float x, float y, float z);
 
+	void lookAt(float eyeX, float eyeY, float eyeZ, float targetX, float targetY, float targetZ, float upX, float upY, float upZ);
+	void perspective(float fieldOfView, float aspectRatio, float near, float far);
+	void ortho(float l, float r, float t, float b, float near, float far);
+
 	void reset();
 	void setTransformation(float x, float y, float a, float sx, float sy, float ox, float oy, float kx, float ky);
 
@@ -83,7 +87,15 @@ public:
 	static bool getConstant(MatrixLayout in, const char *&out);
 	static std::vector<std::string> getConstants(MatrixLayout);
 
+	bool insideFrustum(const Vector3& min, const Vector3& max);
+
 private:
+
+	inline void markDirty()
+	{
+		inverseDirty = true;
+		frustumDirty = true;
+	}
 
 	inline const Matrix4 &getInverseMatrix()
 	{
@@ -95,10 +107,16 @@ private:
 
 		return inverseMatrix;
 	}
-	
+
 	Matrix4 matrix;
 	bool inverseDirty;
 	Matrix4 inverseMatrix;
+
+	static const int NUM_PLANES = 6;
+	struct Plane { Vector3 normal; float d; };
+	Plane planes[NUM_PLANES];
+	bool frustumDirty;
+	Plane *getFrustum();
 
 	static StringMap<MatrixLayout, MATRIX_MAX_ENUM>::Entry matrixLayoutEntries[];
 	static StringMap<MatrixLayout, MATRIX_MAX_ENUM> matrixLayouts;

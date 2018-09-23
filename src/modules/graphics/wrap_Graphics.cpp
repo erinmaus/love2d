@@ -2951,10 +2951,18 @@ int w_unproject(lua_State *L)
 
 int w_ortho(lua_State *L)
 {
-	int w = (float)luaL_checkinteger(L, 1);
-	int h = (float)luaL_checkinteger(L, 2);
+	int w = luaL_checkinteger(L, 1);
+	int h = luaL_checkinteger(L, 2);
 
 	instance()->setOrtho(w, h, !instance()->isCanvasActive());
+	return 0;
+}
+
+int w_setProjection(lua_State *L)
+{
+	math::Transform *t = math::luax_checktransform(L, 1);
+	instance()->setProjection(t->getMatrix());
+
 	return 0;
 }
 
@@ -3118,6 +3126,7 @@ static const luaL_Reg functions[] =
 	{ "lookAt", w_lookAt },
 	{ "ortho", w_ortho },
 	{ "perspective", w_perspective },
+	{ "projection", w_setProjection },
 	{ "project", w_project },
 	{ "unproject", w_unproject },
 	{ "applyTransform", w_applyTransform },
