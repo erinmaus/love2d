@@ -134,7 +134,7 @@ int w_Transform_lookAt(lua_State *L)
 	float targetX = (float)luaL_checknumber(L, 5);
 	float targetY = (float)luaL_checknumber(L, 6);
 	float targetZ = (float)luaL_checknumber(L, 7);
-	float positionX = (float)luaL_checknumber(L, 9);
+	float positionX = (float)luaL_checknumber(L, 8);
 	float positionY = (float)luaL_checknumber(L, 9);
 	float positionZ = (float)luaL_checknumber(L, 10);
 	t->lookAt(eyeX, eyeY, eyeZ, targetX, targetY, targetZ, positionX, positionY, positionZ);
@@ -394,8 +394,9 @@ int w_Transform_boxInsideFrustum(lua_State* L)
 	max.x = (float) luaL_checknumber(L, 5);
 	max.y = (float) luaL_checknumber(L, 6);
 	max.z = (float) luaL_checknumber(L, 7);
+	float comparison = (float) luaL_optnumber(L, 8, 0.0);
 
-	lua_pushboolean(L, t->insideFrustum(min, max));
+	lua_pushboolean(L, t->insideFrustum(min, max, comparison));
 	return 1;
 }
 

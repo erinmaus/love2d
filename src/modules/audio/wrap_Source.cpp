@@ -338,6 +338,13 @@ int w_Source_setAirAbsorption(lua_State *L)
 	return 0;
 }
 
+int w_Source_getAirAbsorption(lua_State *L)
+{
+	Source *t = luax_checksource(L, 1);
+	luax_catchexcept(L, [&](){ lua_pushnumber(L, t->getAirAbsorptionFactor()); });
+	return 1;
+}
+
 int w_Source_getChannelCount(lua_State *L)
 {
 	Source *t = luax_checksource(L, 1);
@@ -464,8 +471,10 @@ int w_Source_setEffect(lua_State *L)
 	Source *t = luax_checksource(L, 1);
 	const char *namestr = luaL_checkstring(L, 2);
 
+	const bool isBool = lua_gettop(L) >= 3 && lua_isboolean(L, 3);
+
 	// :setEffect(effect, false) = clear effect
-	if (lua_gettop(L) == 3 && lua_isboolean(L, 3) && !lua_toboolean(L, 3))
+	if (isBool && !lua_toboolean(L, 3))
 	{
 		luax_catchexcept(L, [&]() { lua_pushboolean(L, t->unsetEffect(namestr)); });
 		return 1;
@@ -473,10 +482,11 @@ int w_Source_setEffect(lua_State *L)
 
 	std::map<Filter::Parameter, float> params;
 
-	if (setFilterReadFilter(L, 3, params) == 1)
-		luax_catchexcept(L, [&]() { lua_pushboolean(L, t->setEffect(namestr, params)); });
-	else
+	// :setEffect(effect, [true]) = set effect without filter
+	if (isBool || setFilterReadFilter(L, 3, params) == 0)
 		luax_catchexcept(L, [&]() { lua_pushboolean(L, t->setEffect(namestr)); });
+	else
+		luax_catchexcept(L, [&]() { lua_pushboolean(L, t->setEffect(namestr, params)); });
 	return 1;
 }
 
@@ -487,13 +497,20 @@ int w_Source_getEffect(lua_State *L)
 
 	std::map<Filter::Parameter, float> params;
 	if (!t->getEffect(namestr, params))
-		return 0;
+	{
+		luax_pushboolean(L, false);
+		return 1;
+	}
 
+	luax_pushboolean(L, true);
+
+	// No filter associated, return nil as second argument
 	if (params.size() == 0)
-		return 0;
+		return 1;
 
+	// Return filter settings as second argument
 	getFilterWriteFilter(L, 3, params);
-	return 1;
+	return 2;
 }
 
 int w_Source_getActiveEffects(lua_State *L)
@@ -628,6 +645,8 @@ static const luaL_Reg w_Source_functions[] =
 	{ "getAttenuationDistances", w_Source_getAttenuationDistances },
 	{ "setRolloff", w_Source_setRolloff },
 	{ "getRolloff", w_Source_getRolloff },
+	{ "setAirAbsorption", w_Source_setAirAbsorption },
+	{ "getAirAbsorption", w_Source_getAirAbsorption },
 
 	{ "getChannelCount", w_Source_getChannelCount },
 

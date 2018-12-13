@@ -87,7 +87,7 @@ public:
 	static bool getConstant(MatrixLayout in, const char *&out);
 	static std::vector<std::string> getConstants(MatrixLayout);
 
-	bool insideFrustum(const Vector3& min, const Vector3& max);
+	bool insideFrustum(const Vector3& min, const Vector3& max, float comparison = 0.0f);
 
 private:
 

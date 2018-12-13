@@ -36,8 +36,9 @@ namespace graphics
 namespace opengl
 {
 
-static const int BUFFER_FRAMES = 3;
-static const int MAX_SYNCS_PER_FRAME = 4;
+// Typically this should be 3 frames, but we only do per-frame syncing right now
+// so we add an extra frame to reduce the (small) chance of stalls.
+static const int BUFFER_FRAMES = 4;
 
 class StreamBufferClientMemory final : public love::graphics::StreamBuffer
 {
@@ -60,11 +61,6 @@ public:
 	virtual ~StreamBufferClientMemory()
 	{
 		delete[] data;
-	}
-
-	size_t getUsableSize() const override
-	{
-		return bufferSize;
 	}
 
 	MapInfo map(size_t /*minsize*/) override
@@ -96,7 +92,6 @@ public:
 		, glMode(OpenGL::getGLBufferType(mode))
 		, data(nullptr)
 		, offset(0)
-		, frameOffset(0)
 	{
 		try
 		{
@@ -116,17 +111,12 @@ public:
 		delete[] data;
 	}
 
-	size_t getUsableSize() const override
-	{
-		return bufferSize - frameOffset;
-	}
-
 	MapInfo map(size_t minsize) override
 	{
 		if (offset + minsize > bufferSize)
 		{
 			offset = 0;
-			frameOffset = 0;
+			frameGPUReadOffset = 0;
 			gl.bindBuffer(mode, vbo);
 			glBufferData(glMode, bufferSize, nullptr, GL_STREAM_DRAW);
 		}
@@ -144,12 +134,12 @@ public:
 	void markUsed(size_t usedsize) override
 	{
 		offset += usedsize;
-		frameOffset += usedsize;
+		frameGPUReadOffset += usedsize;
 	}
 
 	void nextFrame() override
 	{
-		frameOffset = 0;
+		frameGPUReadOffset = 0;
 	}
 
 	ptrdiff_t getHandle() const override { return vbo; }
@@ -164,7 +154,7 @@ public:
 		glBufferData(glMode, bufferSize, nullptr, GL_STREAM_DRAW);
 
 		offset = 0;
-		frameOffset = 0;
+		frameGPUReadOffset = 0;
 
 		return true;
 	}
@@ -186,7 +176,6 @@ protected:
 	uint8 *data;
 
 	size_t offset;
-	size_t frameOffset;
 
 }; // StreamBufferSubDataOrphan
 
@@ -196,9 +185,7 @@ public:
 
 	StreamBufferSync(BufferType type, size_t size)
 		: love::graphics::StreamBuffer(type, size)
-		, syncSize((size + MAX_SYNCS_PER_FRAME - 1) / MAX_SYNCS_PER_FRAME)
 		, frameIndex(0)
-		, frameGPUReadOffset(0)
 		, syncs()
 	{}
 
@@ -206,7 +193,9 @@ public:
 
 	void nextFrame() override
 	{
-		getCurrentSync()->fence();
+		// Insert a GPU fence for this frame's section of the data, we'll wait
+		// for it when we try to map that data for writing in subsequent frames.
+		syncs[frameIndex].fence();
 
 		frameIndex = (frameIndex + 1) % BUFFER_FRAMES;
 		frameGPUReadOffset = 0;
@@ -214,31 +203,16 @@ public:
 
 	void markUsed(size_t usedsize) override
 	{
-		int firstSyncIndex = frameGPUReadOffset / syncSize;
-		int lastSyncIndex = std::min((frameGPUReadOffset + usedsize), bufferSize - 1) / syncSize;
-
-		// Insert fences for all sync buckets completely filled by this section
-		// of the data. The last bucket before the end of the frame will also be
-		// handled by nextFrame().
-		for (int i = firstSyncIndex; i < lastSyncIndex; i++)
-			syncs[frameIndex * MAX_SYNCS_PER_FRAME + i].fence();
+		// We insert a fence for all data from this frame at the end of the
+		// frame (in nextFrame), rather than doing anything more fine-grained.
 
 		frameGPUReadOffset += usedsize;
 	}
 
 protected:
 
-	const size_t syncSize;
-
 	int frameIndex;
-	size_t frameGPUReadOffset;
-
-	FenceSync syncs[MAX_SYNCS_PER_FRAME * BUFFER_FRAMES];
-
-	FenceSync *getCurrentSync()
-	{
-		return &syncs[frameIndex * MAX_SYNCS_PER_FRAME + frameGPUReadOffset / syncSize];
-	}
+	FenceSync syncs[BUFFER_FRAMES];
 
 }; // StreamBufferSync
 
@@ -259,26 +233,15 @@ public:
 		unloadVolatile();
 	}
 
-	size_t getUsableSize() const override
-	{
-		return bufferSize - frameGPUReadOffset;
-	}
-
 	MapInfo map(size_t /*minsize*/) override
 	{
 		gl.bindBuffer(mode, vbo);
 
+		// Make sure this frame's section of the buffer is done being used.
+		syncs[frameIndex].cpuWait();
+
 		MapInfo info;
 		info.size = bufferSize - frameGPUReadOffset;
-
-		int firstSyncIndex = frameGPUReadOffset / syncSize;
-		int lastSyncIndex = (bufferSize - 1) / syncSize;
-
-		// We're mapping the full range of space left in the buffer, so we
-		// need to wait on all of it...
-		// FIXME: is it even worth it to have multiple sync objects per frame?
-		for (int i = firstSyncIndex; i <= lastSyncIndex; i++)
-			syncs[frameIndex * MAX_SYNCS_PER_FRAME + i].cpuWait();
 
 		GLbitfield flags = GL_MAP_WRITE_BIT | GL_MAP_FLUSH_EXPLICIT_BIT | GL_MAP_UNSYNCHRONIZED_BIT;
 
@@ -351,26 +314,14 @@ public:
 		unloadVolatile();
 	}
 
-	size_t getUsableSize() const override
-	{
-		return bufferSize - frameGPUReadOffset;
-	}
-
 	MapInfo map(size_t /*minsize*/) override
 	{
+		// Make sure this frame's section of the buffer is done being used.
+		syncs[frameIndex].cpuWait();
+
 		MapInfo info;
 		info.size = bufferSize - frameGPUReadOffset;
 		info.data = data + (frameIndex * bufferSize) + frameGPUReadOffset;
-
-		int firstSyncIndex = frameGPUReadOffset / syncSize;
-		int lastSyncIndex = (bufferSize - 1) / syncSize;
-
-		// We're mapping the full range of space left in the buffer, so we
-		// need to wait on all of it...
-		// FIXME: is it even worth it to have multiple sync objects per frame?
-		for (int i = firstSyncIndex; i <= lastSyncIndex; i++)
-			syncs[frameIndex * MAX_SYNCS_PER_FRAME + i].cpuWait();
-
 		return info;
 	}
 
@@ -454,26 +405,14 @@ public:
 		alignedFree(data);
 	}
 
-	size_t getUsableSize() const override
-	{
-		return bufferSize - frameGPUReadOffset;
-	}
-
 	MapInfo map(size_t /*minsize*/) override
 	{
+		// Make sure this frame's section of the buffer is done being used.
+		syncs[frameIndex].cpuWait();
+
 		MapInfo info;
 		info.size = bufferSize - frameGPUReadOffset;
 		info.data = data + (frameIndex * bufferSize) + frameGPUReadOffset;
-
-		int firstSyncIndex = frameGPUReadOffset / syncSize;
-		int lastSyncIndex = (bufferSize - 1) / syncSize;
-
-		// We're mapping the full range of space left in the buffer, so we
-		// need to wait on all of it...
-		// FIXME: is it even worth it to have multiple sync objects per frame?
-		for (int i = firstSyncIndex; i <= lastSyncIndex; i++)
-			syncs[frameIndex * MAX_SYNCS_PER_FRAME + i].cpuWait();
-
 		return info;
 	}
 

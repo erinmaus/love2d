@@ -258,7 +258,7 @@ static Vector3 getNegativeVertex(
 	return result;
 }
 
-bool Transform::insideFrustum(const Vector3 &min, const Vector3 &max)
+bool Transform::insideFrustum(const Vector3 &min, const Vector3 &max, float comparison)
 {
 	Plane* frustum = getFrustum();
 
@@ -266,7 +266,7 @@ bool Transform::insideFrustum(const Vector3 &min, const Vector3 &max)
 	{
 		Vector3 positiveVertex = getPositiveVertex(min, max, frustum[i].normal);
 		float dot = Vector3::dot(positiveVertex, frustum[i].normal) + frustum[i].d;
-		if (dot < 0)
+		if (dot < comparison)
 		{
 			return false;
 		}
