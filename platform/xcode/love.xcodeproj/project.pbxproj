@@ -11,7 +11,6 @@
 		A93E6E5510420B57007D418B /* Lua.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A93E6E5310420B57007D418B /* Lua.framework */; };
 		A93E6EED10420BA8007D418B /* love.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A93E6A3410420AC0007D418B /* love.cpp */; };
 		CE73F8001EEB64150052DAB3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE73F7FF1EEB64150052DAB3 /* AVFoundation.framework */; };
-		D53559FE28BBD71A0092C3D5 /* itsyrealm.love in Resources */ = {isa = PBXBuildFile; fileRef = D54AF71E2808F6A000D6F0F1 /* itsyrealm.love */; };
 		D54AF70B2808E97800D6F0F1 /* libmodplug.framework in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = D54AF70A2808E97800D6F0F1 /* libmodplug.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D54AF70D2808EAE000D6F0F1 /* freetype.framework in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = D54AF70C2808EAE000D6F0F1 /* freetype.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D54AF70F2808EAEF00D6F0F1 /* Lua.framework in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = D54AF70E2808EAEF00D6F0F1 /* Lua.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -22,10 +21,6 @@
 		D54AF7192808EB4300D6F0F1 /* theora.framework in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = D54AF7182808EB4300D6F0F1 /* theora.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D54AF71B2808EB5300D6F0F1 /* vorbis.framework in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = D54AF71A2808EB5300D6F0F1 /* vorbis.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D557C7A72809D81E002E80C7 /* love.framework in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = FA0B78D81A958301000E1D17 /* love.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D5BDC4D1280996A40099315F /* nbunny.dylib in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = D5BDC4CE280996A40099315F /* nbunny.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		D5BDC4D2280996A40099315F /* mapp.dylib in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = D5BDC4CF280996A40099315F /* mapp.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		D5BDC4D3280996A40099315F /* bmashina.dylib in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = D5BDC4D0280996A40099315F /* bmashina.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		D5D9B970280984300058674A /* ext in Resources */ = {isa = PBXBuildFile; fileRef = D5D9B96F280984300058674A /* ext */; };
 		FA0797991BF480A200034B7C /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0797981BF480A200034B7C /* GameController.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FA08F69616C766E000F007B5 /* love.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA08F69116C765A200F007B5 /* love.framework */; };
 		FA0B7F301A95AC7D000E1D17 /* love.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A93E6A3410420AC0007D418B /* love.cpp */; };
@@ -88,9 +83,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D557C7A72809D81E002E80C7 /* love.framework in Copy Frameworks (11 items) */,
-				D5BDC4D1280996A40099315F /* nbunny.dylib in Copy Frameworks (11 items) */,
-				D5BDC4D2280996A40099315F /* mapp.dylib in Copy Frameworks (11 items) */,
-				D5BDC4D3280996A40099315F /* bmashina.dylib in Copy Frameworks (11 items) */,
 				D54AF71B2808EB5300D6F0F1 /* vorbis.framework in Copy Frameworks (11 items) */,
 				D54AF7192808EB4300D6F0F1 /* theora.framework in Copy Frameworks (11 items) */,
 				D54AF7172808EB3300D6F0F1 /* SDL2.framework in Copy Frameworks (11 items) */,
@@ -118,8 +110,6 @@
 		A9F16926109E7BAD00FC83D1 /* libmodplug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libmodplug.framework; path = /Library/Frameworks/libmodplug.framework; sourceTree = "<absolute>"; };
 		A9F169A6109E824900FC83D1 /* mpg123.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = mpg123.framework; path = /Library/Frameworks/mpg123.framework; sourceTree = "<absolute>"; };
 		CE73F7FF1EEB64150052DAB3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
-		D53559FC28BBBDFF0092C3D5 /* itsyrealm.love */ = {isa = PBXFileReference; lastKnownFileType = file; path = itsyrealm.love; sourceTree = "<group>"; };
-		D54AF7082808E95E00D6F0F1 /* freetype.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = freetype.framework; sourceTree = "<group>"; };
 		D54AF70A2808E97800D6F0F1 /* libmodplug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libmodplug.framework; path = "../../../love-apple-dependencies/macOS/Frameworks/libmodplug.framework"; sourceTree = "<group>"; };
 		D54AF70C2808EAE000D6F0F1 /* freetype.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = freetype.framework; path = "../../../love-apple-dependencies/macOS/Frameworks/freetype.framework"; sourceTree = "<group>"; };
 		D54AF70E2808EAEF00D6F0F1 /* Lua.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lua.framework; path = "../../../love-apple-dependencies/macOS/Frameworks/Lua.framework"; sourceTree = "<group>"; };
@@ -131,11 +121,7 @@
 		D54AF71A2808EB5300D6F0F1 /* vorbis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = vorbis.framework; path = "../../../love-apple-dependencies/macOS/Frameworks/vorbis.framework"; sourceTree = "<group>"; };
 		D54AF71E2808F6A000D6F0F1 /* itsyrealm.love */ = {isa = PBXFileReference; lastKnownFileType = file; name = itsyrealm.love; path = ../../../../ItsyRealm/Staging/itsyrealm.love; sourceTree = "<group>"; };
 		D557C7A92809EBEF002E80C7 /* love-macosxRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "love-macosxRelease.entitlements"; sourceTree = "<group>"; };
-		D5BDC4CE280996A40099315F /* nbunny.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = nbunny.dylib; path = ../../../../ext/nbunny.dylib; sourceTree = "<group>"; };
-		D5BDC4CF280996A40099315F /* mapp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = mapp.dylib; path = ../../../../ext/mapp.dylib; sourceTree = "<group>"; };
-		D5BDC4D0280996A40099315F /* bmashina.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = bmashina.dylib; path = ../../../../ext/bmashina.dylib; sourceTree = "<group>"; };
 		D5D9B96F280984300058674A /* ext */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ext; path = ../../../../ext; sourceTree = "<group>"; };
-		D5DC274A281F533F004E9030 /* itsyrealm.love */ = {isa = PBXFileReference; lastKnownFileType = file; name = itsyrealm.love; path = ../../../../ItsyRealm/itsyscape/itsyrealm.love; sourceTree = "<group>"; };
 		D5DC275128286D30004E9030 /* love-macosxDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "love-macosxDebug.entitlements"; sourceTree = "<group>"; };
 		D5EF0555282870FE005477BC /* love-macosx.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "love-macosx.entitlements"; sourceTree = "<group>"; };
 		FA0797981BF480A200034B7C /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
@@ -224,14 +210,9 @@
 		29B97314FDCFA39411CA2CEA /* love */ = {
 			isa = PBXGroup;
 			children = (
-				D53559FC28BBBDFF0092C3D5 /* itsyrealm.love */,
 				D5EF0555282870FE005477BC /* love-macosx.entitlements */,
 				D5DC275128286D30004E9030 /* love-macosxDebug.entitlements */,
-				D5DC274A281F533F004E9030 /* itsyrealm.love */,
 				D557C7A92809EBEF002E80C7 /* love-macosxRelease.entitlements */,
-				D5BDC4D0280996A40099315F /* bmashina.dylib */,
-				D5BDC4CF280996A40099315F /* mapp.dylib */,
-				D5BDC4CE280996A40099315F /* nbunny.dylib */,
 				D54AF71A2808EB5300D6F0F1 /* vorbis.framework */,
 				D54AF7182808EB4300D6F0F1 /* theora.framework */,
 				D54AF7162808EB3300D6F0F1 /* SDL2.framework */,
@@ -241,7 +222,6 @@
 				D54AF70E2808EAEF00D6F0F1 /* Lua.framework */,
 				D54AF70C2808EAE000D6F0F1 /* freetype.framework */,
 				D54AF70A2808E97800D6F0F1 /* libmodplug.framework */,
-				D54AF7082808E95E00D6F0F1 /* freetype.framework */,
 				FA5D249A1A96CF4300C6FC8F /* Images.xcassets */,
 				FA577A9D16C7262E00860150 /* Source */,
 				FA5D24A01A96CF7200C6FC8F /* Supporting Files */,
@@ -434,8 +414,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D53559FE28BBD71A0092C3D5 /* itsyrealm.love in Resources */,
-				D5D9B970280984300058674A /* ext in Resources */,
 				FA5933751C6D625B000EC779 /* Images.xcassets in Resources */,
 				FAC1A449196F5DC600125284 /* license.txt in Resources */,
 			);
