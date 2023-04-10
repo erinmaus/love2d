@@ -142,7 +142,7 @@ bool System::openURL(const std::string &url) const
 
 #endif
 
-	return (int) result > 32;
+	return (size_t) result > 32;
 
 #endif
 }

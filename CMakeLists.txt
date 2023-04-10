@@ -27,8 +27,8 @@ cmake_minimum_required(VERSION 3.1)
 
 project(love)
 
-set(LOVE_EXE_NAME love)
-set(LOVE_LIB_NAME liblove)
+set(LOVE_EXE_NAME lovew)
+set(LOVE_LIB_NAME love)
 
 set(CMAKE_MODULE_PATH "${love_SOURCE_DIR}/extra/cmake" ${CMAKE_MODULE_PATH})
 # Needed for shared libs on Linux. (-fPIC).
@@ -36,9 +36,9 @@ set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 
 set (CMAKE_CXX_STANDARD 11)
 
-if(MSVC)
+#if(MSVC)
 	set(LOVE_CONSOLE_EXE_NAME lovec)
-endif()
+#endif()
 
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
 	set(LOVE_X64 TRUE)
@@ -247,7 +247,7 @@ endif()
 ###
 
 if(MSVC)
-	set(DISABLE_WARNING_FLAG -W0)
+	get(DISABLE_WARNING_FLAG -W0)
 else()
 	set(DISABLE_WARNING_FLAG -w)
 endif()
@@ -1288,8 +1288,8 @@ set(LOVE_SRC_3P_ENET
 )
 
 add_library(love_3p_enet ${LOVE_SRC_3P_ENET})
-target_link_libraries(love_3p_enet ${LOVE_LUA_LIBRARY})
-target_include_directories(love_3p_enet PUBLIC src/libraries/enet/libenet/include)
+target_link_libraries(love_3p_enet ${LOVE_LUA_LIBRARY} winmm)
+target_include_directories(love_3p_enet PUBLIC src/libraries/enet/libenet/include ${MEGA_LUAJIT_INCLUDE})
 
 #
 # GLAD
@@ -1390,7 +1390,8 @@ if(MSVC)
 else()
 	set(LOVE_SRC_3P_GLSLANG_GLSLANG_OSDEPENDENT
 		${LOVE_SRC_3P_GLSLANG_GLSLANG_OSDEPENDENT}
-		src/libraries/glslang/glslang/OSDependent/Unix/ossource.cpp
+		src/libraries/glslang/glslang/OSDependent/Windows/main.cpp
+		src/libraries/glslang/glslang/OSDependent/Windows/ossource.cpp
 	)
 endif()
 
@@ -1495,15 +1496,13 @@ if(MSVC)
 else()
 	set(LOVE_SRC_3P_LUASOCKET_LIBLUASOCKET
 		${LOVE_SRC_3P_LUASOCKET_LIBLUASOCKET}
-		src/libraries/luasocket/libluasocket/serial.c
-		src/libraries/luasocket/libluasocket/unix.c
-		src/libraries/luasocket/libluasocket/unix.h
-		src/libraries/luasocket/libluasocket/unixtcp.c
-		src/libraries/luasocket/libluasocket/unixtcp.h
-		src/libraries/luasocket/libluasocket/unixudp.c
-		src/libraries/luasocket/libluasocket/unixudp.h
-		src/libraries/luasocket/libluasocket/usocket.c
-		src/libraries/luasocket/libluasocket/usocket.h
+		src/libraries/luasocket/libluasocket/wsocket.c
+		src/libraries/luasocket/libluasocket/wsocket.h
+	)
+
+	set(LOVE_LINK_L3P_LUASOCKET_LIBLUASOCKET
+		${LOVE_LINK_L3P_LUASOCKET_LIBLUASOCKET}
+		ws2_32.lib
 	)
 endif()
 
@@ -1725,20 +1724,21 @@ link_directories(${LOVE_LINK_DIRS})
 
 set(LOVE_RC)
 
-if(MSVC)
+#if(MSVC)
 	set(LOVE_LINK_LIBRARIES ${LOVE_LINK_LIBRARIES}
-		ws2_32.lib
-		winmm.lib
+		ws2_32
+		winmm
 	)
 
 	set(LOVE_RC
 		extra/windows/love.rc
 		extra/windows/love.ico
 	)
-endif()
+#endif()
 
 add_library(${LOVE_LIB_NAME} SHARED ${LOVE_LIB_SRC} ${LOVE_RC})
-target_link_libraries(${LOVE_LIB_NAME} ${LOVE_LINK_LIBRARIES} ${LOVE_3P})
+target_link_libraries(${LOVE_LIB_NAME} ${LOVE_3P} ${LOVE_LINK_LIBRARIES})
+target_link_options(${LOVE_LIB_NAME} PRIVATE -Wl,--export-all-symbols)
 
 if(LOVE_EXTRA_DEPENDECIES)
 	add_dependencies(${LOVE_LIB_NAME} ${LOVE_EXTRA_DEPENDECIES})
@@ -1752,13 +1752,14 @@ endif()
 #
 # love (executable)
 #
-add_executable(${LOVE_EXE_NAME} WIN32 src/love.cpp ${LOVE_RC})
-target_link_libraries(${LOVE_EXE_NAME} ${LOVE_LIB_NAME})
+add_executable(${LOVE_EXE_NAME} src/love.cpp ${LOVE_RC})
+target_link_libraries(${LOVE_EXE_NAME} mingw32 ${LOVE_LIB_NAME} )
+target_link_options(${LOVE_EXE_NAME} PRIVATE -mwindows)
 
-if(MSVC)
+#if(MSVC) 
 	add_executable(${LOVE_CONSOLE_EXE_NAME} src/love.cpp ${LOVE_RC})
-	target_link_libraries(${LOVE_CONSOLE_EXE_NAME} ${LOVE_LIB_NAME})
-endif()
+	target_link_libraries(${LOVE_CONSOLE_EXE_NAME} mingw32 ${LOVE_LIB_NAME})
+#endif()
 
 function(post_step_move_dll ARG_POST_TARGET ARG_TARGET_OR_FILE)
 	if(TARGET ${ARG_TARGET_OR_FILE})
