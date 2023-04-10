@@ -4127,6 +4127,11 @@
 				TargetAttributes = {
 					FA0B78DC1A958B90000E1D17 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = XRVN523645;
+					};
+					FA577AAE16C7507900860150 = {
+						DevelopmentTeam = XRVN523645;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -4135,6 +4140,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 54067CFB7D564E5764FA17DC /* love */;
@@ -4980,6 +4986,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = XRVN523645;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -5042,6 +5049,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = XRVN523645;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -5074,7 +5082,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@rpath";
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "-Wall";
@@ -5232,6 +5240,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = XRVN523645;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -5272,8 +5281,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = XRVN523645;
 				DYLIB_COMPATIBILITY_VERSION = 9.0;
 				DYLIB_CURRENT_VERSION = 9.0;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5306,6 +5318,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "love2d.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = love;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -5315,7 +5328,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = XRVN523645;
 				DYLIB_COMPATIBILITY_VERSION = 9.0;
 				DYLIB_CURRENT_VERSION = 9.0;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5348,6 +5364,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "love2d.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = love;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -5357,8 +5374,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = XRVN523645;
 				DYLIB_COMPATIBILITY_VERSION = 9.0;
 				DYLIB_CURRENT_VERSION = 9.0;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5391,6 +5411,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "love2d.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = love;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 			};
