@@ -2,7 +2,7 @@
 Name=ItsyRealm
 Comment=Explore, craft, and fight in this zany world of horrors!
 MimeType=application/x-love-game;
-Exec=@bindir@/love --fused %f
+Exec=@bindir@/love --fused @bindir@/itsyrealm.love
 Type=Application
 Categories=Development;Game;
 Terminal=false
