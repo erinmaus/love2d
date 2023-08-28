@@ -67,7 +67,7 @@ typedef struct FFI_RandomGenerator
 } FFI_RandomGenerator;
 ]])
 
-local ffifuncs = ffi.cast("FFI_RandomGenerator **", ffifuncspointer)[0]
+local ffifuncs = ffi.cast("FFI_RandomGenerator **", ffifuncspointer_str)[0]
 
 
 -- Overwrite some regular love.math functions with FFI implementations.
