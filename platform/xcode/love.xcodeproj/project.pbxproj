@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,6 +21,9 @@
 		D54AF7192808EB4300D6F0F1 /* theora.framework in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = D54AF7182808EB4300D6F0F1 /* theora.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D54AF71B2808EB5300D6F0F1 /* vorbis.framework in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = D54AF71A2808EB5300D6F0F1 /* vorbis.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D557C7A72809D81E002E80C7 /* love.framework in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = FA0B78D81A958301000E1D17 /* love.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D5850CFD2B14322C00979CC0 /* love.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5CAD3042B1425B200CC2A70 /* love.framework */; };
+		D5CAD3102B142D7A00CC2A70 /* love.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5CAD3042B1425B200CC2A70 /* love.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D5CAD3122B142F3400CC2A70 /* SDL2.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5CAD3112B142F3400CC2A70 /* SDL2.xcframework */; };
 		FA0797991BF480A200034B7C /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0797981BF480A200034B7C /* GameController.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FA08F69616C766E000F007B5 /* love.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA08F69116C765A200F007B5 /* love.framework */; };
 		FA0B7F301A95AC7D000E1D17 /* love.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A93E6A3410420AC0007D418B /* love.cpp */; };
@@ -37,7 +40,6 @@
 		FA5D24961A96CAC200C6FC8F /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA5D24951A96CAC200C6FC8F /* CoreMotion.framework */; };
 		FA5D249C1A96CF4300C6FC8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5D249A1A96CF4300C6FC8F /* Images.xcassets */; };
 		FA5D24C21A96D78000C6FC8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA5D24C11A96D78000C6FC8F /* Foundation.framework */; };
-		FA5D24D11A96E73300C6FC8F /* liblove.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0B7EEF1A95924A000E1D17 /* liblove.a */; };
 		FA7C636A1A9C49570000FD29 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7C63691A9C49570000FD29 /* Launch Screen.xib */; };
 		FA9B4A0A16E1579F00074F42 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9B4A0916E1579F00074F42 /* SDL2.framework */; };
 		FAC1A449196F5DC600125284 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = FAC1A448196F5DC600125284 /* license.txt */; };
@@ -45,6 +47,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D5CAD3032B1425B200CC2A70 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA577A9316C7217800860150 /* liblove.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D516AE762B14243E00D782A9;
+			remoteInfo = "liblove-ios-framework";
+		};
+		D5CAD30D2B142D3000CC2A70 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA577A9316C7217800860150 /* liblove.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D516AB472B14243E00D782A9;
+			remoteInfo = "liblove-ios-framework";
+		};
 		FA0B78D71A958301000E1D17 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA577A9316C7217800860150 /* liblove.xcodeproj */;
@@ -57,13 +73,6 @@
 			containerPortal = FA577A9316C7217800860150 /* liblove.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = FA0B78DD1A958B90000E1D17;
-			remoteInfo = "liblove-ios";
-		};
-		FA5D24BA1A96D6FC00C6FC8F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FA577A9316C7217800860150 /* liblove.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = FA0B78DC1A958B90000E1D17;
 			remoteInfo = "liblove-ios";
 		};
 		FAA287711B0ABF1400B82827 /* PBXContainerItemProxy */ = {
@@ -96,6 +105,16 @@
 			name = "Copy Frameworks (11 items)";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D5CAD30F2B142D6500CC2A70 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D5CAD3102B142D7A00CC2A70 /* love.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +140,7 @@
 		D54AF71A2808EB5300D6F0F1 /* vorbis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = vorbis.framework; path = "../../../love-apple-dependencies/macOS/Frameworks/vorbis.framework"; sourceTree = "<group>"; };
 		D54AF71E2808F6A000D6F0F1 /* itsyrealm.love */ = {isa = PBXFileReference; lastKnownFileType = file; name = itsyrealm.love; path = ../../../../ItsyRealm/Staging/itsyrealm.love; sourceTree = "<group>"; };
 		D557C7A92809EBEF002E80C7 /* love-macosxRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "love-macosxRelease.entitlements"; sourceTree = "<group>"; };
+		D5CAD3112B142F3400CC2A70 /* SDL2.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SDL2.xcframework; path = ios/libraries/SDL2.xcframework; sourceTree = "<group>"; };
 		D5D9B96F280984300058674A /* ext */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ext; path = ../../../../ext; sourceTree = "<group>"; };
 		D5DC275128286D30004E9030 /* love-macosxDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "love-macosxDebug.entitlements"; sourceTree = "<group>"; };
 		D5EF0555282870FE005477BC /* love-macosx.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "love-macosx.entitlements"; sourceTree = "<group>"; };
@@ -166,10 +186,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5850CFD2B14322C00979CC0 /* love.framework in Frameworks */,
+				D5CAD3122B142F3400CC2A70 /* SDL2.xcframework in Frameworks */,
 				FAE64A9D2072738600BC7981 /* Metal.framework in Frameworks */,
 				FA15DFB41F9B8D9E0042AB22 /* libbz2.tbd in Frameworks */,
 				CE73F8001EEB64150052DAB3 /* AVFoundation.framework in Frameworks */,
-				FA5D24D11A96E73300C6FC8F /* liblove.a in Frameworks */,
 				FA5D24C21A96D78000C6FC8F /* Foundation.framework in Frameworks */,
 				FA5D24961A96CAC200C6FC8F /* CoreMotion.framework in Frameworks */,
 				FA0797991BF480A200034B7C /* GameController.framework in Frameworks */,
@@ -189,6 +210,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D5CAD3112B142F3400CC2A70 /* SDL2.xcframework */,
 				FAE64A9C2072738600BC7981 /* Metal.framework */,
 				FA15DFB31F9B8D9E0042AB22 /* libbz2.tbd */,
 				CE73F7FF1EEB64150052DAB3 /* AVFoundation.framework */,
@@ -249,6 +271,7 @@
 			children = (
 				FA0B78D81A958301000E1D17 /* love.framework */,
 				FA0B7EEF1A95924A000E1D17 /* liblove.a */,
+				D5CAD3042B1425B200CC2A70 /* love.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -337,11 +360,12 @@
 				FA0B7F021A95AAF3000E1D17 /* Sources */,
 				FA0B7F031A95AAF3000E1D17 /* Frameworks */,
 				FA0B7F041A95AAF3000E1D17 /* Resources */,
+				D5CAD30F2B142D6500CC2A70 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				FA5D24BB1A96D6FC00C6FC8F /* PBXTargetDependency */,
+				D5CAD30E2B142D3000CC2A70 /* PBXTargetDependency */,
 			);
 			name = "love-ios";
 			productName = "love-ios";
@@ -394,6 +418,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		D5CAD3042B1425B200CC2A70 /* love.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = love.framework;
+			remoteRef = D5CAD3032B1425B200CC2A70 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		FA0B78D81A958301000E1D17 /* love.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -451,10 +482,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FA5D24BB1A96D6FC00C6FC8F /* PBXTargetDependency */ = {
+		D5CAD30E2B142D3000CC2A70 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "liblove-ios";
-			targetProxy = FA5D24BA1A96D6FC00C6FC8F /* PBXContainerItemProxy */;
+			name = "liblove-ios-framework";
+			targetProxy = D5CAD30D2B142D3000CC2A70 /* PBXContainerItemProxy */;
 		};
 		FAA287721B0ABF1400B82827 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -497,7 +528,10 @@
 				);
 				INFOPLIST_FILE = "macosx/love-macosx.plist";
 				INSTALL_PATH = /Applications;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MARKETING_VERSION = 11.2;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "";
@@ -539,7 +573,10 @@
 				);
 				INFOPLIST_FILE = "macosx/love-macosx.plist";
 				INSTALL_PATH = /Applications;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MARKETING_VERSION = 11.2;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "";
@@ -578,7 +615,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/ios/libraries";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -609,7 +646,7 @@
 					"\"$(SRCROOT)/../../src/modules\"",
 				);
 				INFOPLIST_FILE = "love-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				ONLY_ACTIVE_ARCH = NO;
@@ -659,7 +696,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DEPLOYMENT_POSTPROCESSING = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/ios/libraries";
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -692,7 +729,7 @@
 					"\"$(SRCROOT)/../../src/modules\"",
 				);
 				INFOPLIST_FILE = "love-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
@@ -738,6 +775,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ios/libraries",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -758,8 +796,11 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ios/love-ios.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = ItsyRealm;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 11.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.itsyrealm;
@@ -767,6 +808,9 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -795,6 +839,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ios/libraries",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -806,11 +851,16 @@
 					ios/include,
 					ios/include/luajit,
 					ios/include/SDL2,
+					/Library/Frameworks/SDL2.xcframework/Headers,
+					/Library/Frameworks/Lua.xcframework/Headers,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ios/love-ios.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = ItsyRealm;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.itsyrealm;
@@ -818,6 +868,9 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -847,6 +900,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ios/libraries",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -861,8 +915,11 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ios/love-ios.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = ItsyRealm;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.itsyrealm;
@@ -870,6 +927,9 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -904,7 +964,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DEPLOYMENT_POSTPROCESSING = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/ios/libraries";
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -937,7 +997,7 @@
 					"\"$(SRCROOT)/../../src/modules\"",
 				);
 				INFOPLIST_FILE = "love-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
@@ -992,7 +1052,10 @@
 				);
 				INFOPLIST_FILE = "macosx/love-macosx.plist";
 				INSTALL_PATH = /Applications;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MARKETING_VERSION = 11.2;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "";
