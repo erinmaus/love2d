@@ -2650,7 +2650,7 @@
 		FA577A8216C71A5300860150 /* libmodplug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libmodplug.framework; path = /Library/Frameworks/libmodplug.framework; sourceTree = "<absolute>"; };
 		FA577A8C16C71D3600860150 /* auto.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = auto.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		FA577A8D16C71D3600860150 /* boot.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = boot.lua; sourceTree = "<group>"; };
-		FA577AAF16C7507900860150 /* ItsyRealm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ItsyRealm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA577AAF16C7507900860150 /* love.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = love.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA57FB961AE1993600F2AD6D /* noise1234.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = noise1234.cpp; sourceTree = "<group>"; };
 		FA57FB971AE1993600F2AD6D /* noise1234.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = noise1234.h; sourceTree = "<group>"; };
 		FA620A2E1AA2F8DB005DB4C2 /* wrap_Quad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wrap_Quad.cpp; sourceTree = "<group>"; };
@@ -2913,7 +2913,7 @@
 		2F654C0235EB60C744A22507 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FA577AAF16C7507900860150 /* ItsyRealm.framework */,
+				FA577AAF16C7507900860150 /* love.framework */,
 				FA0B78DD1A958B90000E1D17 /* liblove.a */,
 				D516AE762B14243E00D782A9 /* love.framework */,
 			);
@@ -5300,7 +5300,7 @@
 			);
 			name = "liblove-macosx";
 			productName = love;
-			productReference = FA577AAF16C7507900860150 /* ItsyRealm.framework */;
+			productReference = FA577AAF16C7507900860150 /* love.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -7085,7 +7085,8 @@
 					dynamic_lookup,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.itsyrealm;
-				PRODUCT_NAME = ItsyRealm;
+				PRODUCT_MODULE_NAME = love;
+				PRODUCT_NAME = love;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
@@ -7129,7 +7130,8 @@
 					dynamic_lookup,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.itsyrealm;
-				PRODUCT_NAME = ItsyRealm;
+				PRODUCT_MODULE_NAME = love;
+				PRODUCT_NAME = love;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
@@ -7174,7 +7176,8 @@
 					dynamic_lookup,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.itsyrealm;
-				PRODUCT_NAME = ItsyRealm;
+				PRODUCT_MODULE_NAME = love;
+				PRODUCT_NAME = love;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
