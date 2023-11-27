@@ -6704,6 +6704,11 @@
 				);
 				FRAMEWORK_VERSION = A;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					LOVE_APPLE_USE_FRAMEWORKS,
+					"DEBUG=1",
+					LOVE_NOMPG123,
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/macosx/Frameworks/freetype.framework/Headers",
@@ -6754,6 +6759,10 @@
 				);
 				FRAMEWORK_VERSION = A;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					LOVE_APPLE_USE_FRAMEWORKS,
+					LOVE_NOMPG123,
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/macosx/Frameworks/freetype.framework/Headers",
@@ -6804,6 +6813,10 @@
 				);
 				FRAMEWORK_VERSION = A;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					LOVE_NOMPG123,
+					LOVE_APPLE_USE_FRAMEWORKS,
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/macosx/Frameworks/freetype.framework/Headers",
