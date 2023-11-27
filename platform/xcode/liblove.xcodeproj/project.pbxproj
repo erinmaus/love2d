@@ -2650,7 +2650,7 @@
 		FA577A8216C71A5300860150 /* libmodplug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libmodplug.framework; path = /Library/Frameworks/libmodplug.framework; sourceTree = "<absolute>"; };
 		FA577A8C16C71D3600860150 /* auto.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = auto.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		FA577A8D16C71D3600860150 /* boot.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = boot.lua; sourceTree = "<group>"; };
-		FA577AAF16C7507900860150 /* love.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = love.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA577AAF16C7507900860150 /* ItsyRealm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ItsyRealm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA57FB961AE1993600F2AD6D /* noise1234.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = noise1234.cpp; sourceTree = "<group>"; };
 		FA57FB971AE1993600F2AD6D /* noise1234.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = noise1234.h; sourceTree = "<group>"; };
 		FA620A2E1AA2F8DB005DB4C2 /* wrap_Quad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wrap_Quad.cpp; sourceTree = "<group>"; };
@@ -2913,7 +2913,7 @@
 		2F654C0235EB60C744A22507 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FA577AAF16C7507900860150 /* love.framework */,
+				FA577AAF16C7507900860150 /* ItsyRealm.framework */,
 				FA0B78DD1A958B90000E1D17 /* liblove.a */,
 				D516AE762B14243E00D782A9 /* love.framework */,
 			);
@@ -5300,7 +5300,7 @@
 			);
 			name = "liblove-macosx";
 			productName = love;
-			productReference = FA577AAF16C7507900860150 /* love.framework */;
+			productReference = FA577AAF16C7507900860150 /* ItsyRealm.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -6607,7 +6607,7 @@
 					"\"$(SRCROOT)/../../src/modules\"",
 					"\"$(SRCROOT)/../../src/libraries/enet/libenet/include\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@rpath";
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
@@ -6674,7 +6674,7 @@
 					"\"$(SRCROOT)/../../src/modules\"",
 					"\"$(SRCROOT)/../../src/libraries/enet/libenet/include\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@rpath";
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
@@ -6690,9 +6690,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = XRVN523645;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = "";
 				DYLIB_COMPATIBILITY_VERSION = 9.0;
 				DYLIB_CURRENT_VERSION = 9.0;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -6717,8 +6718,8 @@
 					"$(PROJECT_DIR)/macosx/Frameworks/mpg123.framework/Headers",
 				);
 				INFOPLIST_FILE = "macosx/liblove-macosx.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PATH)";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_DYLIB_INSTALL_NAME = "@rpath/love.framework/love";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ios/libraries/freetype",
@@ -6728,7 +6729,8 @@
 					dynamic_lookup,
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = love2d.love;
+				PRODUCT_BUNDLE_IDENTIFIER = com.itsyrealm.api;
+				PRODUCT_MODULE_NAME = love;
 				PRODUCT_NAME = love;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -6745,10 +6747,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = XRVN523645;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = "";
 				DYLIB_COMPATIBILITY_VERSION = 9.0;
 				DYLIB_CURRENT_VERSION = 9.0;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -6772,8 +6775,8 @@
 					"$(PROJECT_DIR)/macosx/Frameworks/mpg123.framework/Headers",
 				);
 				INFOPLIST_FILE = "macosx/liblove-macosx.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PATH)";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_DYLIB_INSTALL_NAME = "@rpath/love.framework/love";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ios/libraries/freetype",
@@ -6783,7 +6786,8 @@
 					dynamic_lookup,
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = love2d.love;
+				PRODUCT_BUNDLE_IDENTIFIER = com.itsyrealm.api;
+				PRODUCT_MODULE_NAME = love;
 				PRODUCT_NAME = love;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -6800,10 +6804,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = XRVN523645;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = "";
 				DYLIB_COMPATIBILITY_VERSION = 9.0;
 				DYLIB_CURRENT_VERSION = 9.0;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -6827,8 +6832,8 @@
 					"$(PROJECT_DIR)/macosx/Frameworks/mpg123.framework/Headers",
 				);
 				INFOPLIST_FILE = "macosx/liblove-macosx.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PATH)";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_DYLIB_INSTALL_NAME = "@rpath/love.framework/love";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ios/libraries/freetype",
@@ -6838,7 +6843,8 @@
 					dynamic_lookup,
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = love2d.love;
+				PRODUCT_BUNDLE_IDENTIFIER = com.itsyrealm.api;
+				PRODUCT_MODULE_NAME = love;
 				PRODUCT_NAME = love;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -7029,7 +7035,7 @@
 					"\"$(SRCROOT)/../../src/modules\"",
 					"\"$(SRCROOT)/../../src/libraries/enet/libenet/include\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@rpath";
 				LIBRARY_SEARCH_PATHS = "";
 				LLVM_LTO = YES;
@@ -7078,8 +7084,8 @@
 					"-undefined",
 					dynamic_lookup,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "love2d.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = love;
+				PRODUCT_BUNDLE_IDENTIFIER = com.itsyrealm;
+				PRODUCT_NAME = ItsyRealm;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
@@ -7122,8 +7128,8 @@
 					"-undefined",
 					dynamic_lookup,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "love2d.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = love;
+				PRODUCT_BUNDLE_IDENTIFIER = com.itsyrealm;
+				PRODUCT_NAME = ItsyRealm;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
@@ -7167,8 +7173,8 @@
 					"-undefined",
 					dynamic_lookup,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "love2d.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = love;
+				PRODUCT_BUNDLE_IDENTIFIER = com.itsyrealm;
+				PRODUCT_NAME = ItsyRealm;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;

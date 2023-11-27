@@ -28,9 +28,9 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIcons</key>
-	<dict/>
+		<dict />
 	<key>CFBundleIcons~ipad</key>
-	<dict/>
+		<dict />
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -46,9 +46,9 @@
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
-	<true/>
+		<true />
 	<key>UIFileSharingEnabled</key>
-	<true/>
+		<true />
 	<key>UILaunchStoryboardName</key>
 	<string>Launch Screen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -98,5 +98,18 @@
 			</dict>
 		</dict>
 	</array>
+	<key>provisioningProfiles</key>
+	<dict>
+		<key>com.itsyrealm</key>
+		<string>iOS Distribution</string>
+	</dict>
+	<key>signingCertificate</key>
+	<string>Apple Distribution</string>
+	<key>method</key>
+	<string>app-store</string>
+	<key>signingStyle</key>
+	<string>manual</string>
+	<key>teamID</key>
+	<string>XRVN523645</string>
 </dict>
 </plist>

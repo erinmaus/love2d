@@ -20,9 +20,9 @@
 		D54AF7172808EB3300D6F0F1 /* SDL2.framework in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = D54AF7162808EB3300D6F0F1 /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D54AF7192808EB4300D6F0F1 /* theora.framework in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = D54AF7182808EB4300D6F0F1 /* theora.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D54AF71B2808EB5300D6F0F1 /* vorbis.framework in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = D54AF71A2808EB5300D6F0F1 /* vorbis.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D557C7A72809D81E002E80C7 /* love.framework in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = FA0B78D81A958301000E1D17 /* love.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D5850CFD2B14322C00979CC0 /* love.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5CAD3042B1425B200CC2A70 /* love.framework */; };
-		D5CAD3102B142D7A00CC2A70 /* love.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5CAD3042B1425B200CC2A70 /* love.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D557C7A72809D81E002E80C7 /* ItsyRealm.framework in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = FA0B78D81A958301000E1D17 /* ItsyRealm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D5850CFD2B14322C00979CC0 /* Love.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5CAD3042B1425B200CC2A70 /* Love.framework */; };
+		D5CAD3102B142D7A00CC2A70 /* Love.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5CAD3042B1425B200CC2A70 /* Love.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D5CAD3122B142F3400CC2A70 /* SDL2.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5CAD3112B142F3400CC2A70 /* SDL2.xcframework */; };
 		FA0797991BF480A200034B7C /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0797981BF480A200034B7C /* GameController.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FA08F69616C766E000F007B5 /* love.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA08F69116C765A200F007B5 /* love.framework */; };
@@ -91,7 +91,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D557C7A72809D81E002E80C7 /* love.framework in Copy Frameworks (11 items) */,
+				D557C7A72809D81E002E80C7 /* ItsyRealm.framework in Copy Frameworks (11 items) */,
 				D54AF71B2808EB5300D6F0F1 /* vorbis.framework in Copy Frameworks (11 items) */,
 				D54AF7192808EB4300D6F0F1 /* theora.framework in Copy Frameworks (11 items) */,
 				D54AF7172808EB3300D6F0F1 /* SDL2.framework in Copy Frameworks (11 items) */,
@@ -111,7 +111,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D5CAD3102B142D7A00CC2A70 /* love.framework in CopyFiles */,
+				D5CAD3102B142D7A00CC2A70 /* Love.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,7 +186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5850CFD2B14322C00979CC0 /* love.framework in Frameworks */,
+				D5850CFD2B14322C00979CC0 /* Love.framework in Frameworks */,
 				D5CAD3122B142F3400CC2A70 /* SDL2.xcframework in Frameworks */,
 				FAE64A9D2072738600BC7981 /* Metal.framework in Frameworks */,
 				FA15DFB41F9B8D9E0042AB22 /* libbz2.tbd in Frameworks */,
@@ -269,9 +269,9 @@
 		FA0B78D41A958301000E1D17 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FA0B78D81A958301000E1D17 /* love.framework */,
+				FA0B78D81A958301000E1D17 /* ItsyRealm.framework */,
 				FA0B7EEF1A95924A000E1D17 /* liblove.a */,
-				D5CAD3042B1425B200CC2A70 /* love.framework */,
+				D5CAD3042B1425B200CC2A70 /* Love.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -385,8 +385,6 @@
 					};
 					FA0B7F051A95AAF3000E1D17 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = XRVN523645;
-						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -418,17 +416,17 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		D5CAD3042B1425B200CC2A70 /* love.framework */ = {
+		D5CAD3042B1425B200CC2A70 /* Love.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = love.framework;
+			path = Love.framework;
 			remoteRef = D5CAD3032B1425B200CC2A70 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		FA0B78D81A958301000E1D17 /* love.framework */ = {
+		FA0B78D81A958301000E1D17 /* ItsyRealm.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = love.framework;
+			path = ItsyRealm.framework;
 			remoteRef = FA0B78D71A958301000E1D17 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -646,7 +644,7 @@
 					"\"$(SRCROOT)/../../src/modules\"",
 				);
 				INFOPLIST_FILE = "love-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				ONLY_ACTIVE_ARCH = NO;
@@ -729,7 +727,7 @@
 					"\"$(SRCROOT)/../../src/modules\"",
 				);
 				INFOPLIST_FILE = "love-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
@@ -796,7 +794,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ios/love-ios.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = ItsyRealm;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -805,7 +803,6 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.itsyrealm;
 				PRODUCT_NAME = ItsyRealm;
-				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -856,7 +853,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ios/love-ios.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = ItsyRealm;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -865,7 +862,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.itsyrealm;
 				PRODUCT_NAME = ItsyRealm;
-				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -915,7 +911,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ios/love-ios.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = ItsyRealm;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -924,7 +920,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.itsyrealm;
 				PRODUCT_NAME = ItsyRealm;
-				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -997,7 +992,7 @@
 					"\"$(SRCROOT)/../../src/modules\"",
 				);
 				INFOPLIST_FILE = "love-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
