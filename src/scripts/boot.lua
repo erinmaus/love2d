@@ -267,6 +267,9 @@ function love.createhandlers()
 		directorydropped = function (dir)
 			if love.directorydropped then return love.directorydropped(dir) end
 		end,
+		background = function()
+			if love.background then return love.background() end
+		end,
 		lowmemory = function ()
 			if love.lowmemory then love.lowmemory() end
 			collectgarbage()
