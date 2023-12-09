@@ -397,6 +397,7 @@ Message *Event::convert(const SDL_Event &e)
 		break;
 	case SDL_APP_DIDENTERBACKGROUND:
 		msg = new Message("background");
+		break;
 	case SDL_APP_LOWMEMORY:
 		msg = new Message("lowmemory");
 		break;
