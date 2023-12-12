@@ -11,6 +11,7 @@
 		A93E6E5510420B57007D418B /* Lua.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A93E6E5310420B57007D418B /* Lua.framework */; };
 		A93E6EED10420BA8007D418B /* love.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A93E6A3410420AC0007D418B /* love.cpp */; };
 		CE73F8001EEB64150052DAB3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE73F7FF1EEB64150052DAB3 /* AVFoundation.framework */; };
+		D5484B7A2B27EA6900453A75 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5484B792B27EA6900453A75 /* Launch Screen.storyboard */; };
 		D54AF70B2808E97800D6F0F1 /* libmodplug.framework in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = D54AF70A2808E97800D6F0F1 /* libmodplug.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D54AF70D2808EAE000D6F0F1 /* freetype.framework in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = D54AF70C2808EAE000D6F0F1 /* freetype.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D54AF70F2808EAEF00D6F0F1 /* Lua.framework in Copy Frameworks (11 items) */ = {isa = PBXBuildFile; fileRef = D54AF70E2808EAEF00D6F0F1 /* Lua.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -129,6 +130,7 @@
 		A9F16926109E7BAD00FC83D1 /* libmodplug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libmodplug.framework; path = /Library/Frameworks/libmodplug.framework; sourceTree = "<absolute>"; };
 		A9F169A6109E824900FC83D1 /* mpg123.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = mpg123.framework; path = /Library/Frameworks/mpg123.framework; sourceTree = "<absolute>"; };
 		CE73F7FF1EEB64150052DAB3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		D5484B792B27EA6900453A75 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		D54AF70A2808E97800D6F0F1 /* libmodplug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libmodplug.framework; path = "../../../love-apple-dependencies/macOS/Frameworks/libmodplug.framework"; sourceTree = "<group>"; };
 		D54AF70C2808EAE000D6F0F1 /* freetype.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = freetype.framework; path = "../../../love-apple-dependencies/macOS/Frameworks/freetype.framework"; sourceTree = "<group>"; };
 		D54AF70E2808EAEF00D6F0F1 /* Lua.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lua.framework; path = "../../../love-apple-dependencies/macOS/Frameworks/Lua.framework"; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 		29B97314FDCFA39411CA2CEA /* love */ = {
 			isa = PBXGroup;
 			children = (
+				D5484B792B27EA6900453A75 /* Launch Screen.storyboard */,
 				D5EF0555282870FE005477BC /* love-macosx.entitlements */,
 				D5DC275128286D30004E9030 /* love-macosxDebug.entitlements */,
 				D557C7A92809EBEF002E80C7 /* love-macosxRelease.entitlements */,
@@ -453,6 +456,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5484B7A2B27EA6900453A75 /* Launch Screen.storyboard in Resources */,
 				FA5D249C1A96CF4300C6FC8F /* Images.xcassets in Resources */,
 				FA7C636A1A9C49570000FD29 /* Launch Screen.xib in Resources */,
 			);
