@@ -420,7 +420,6 @@ void Graphics::restoreStateChecked(const DisplayState &s)
 		setBlendMode(s.blendMode, s.blendAlphaMode);
 
 	// These are just simple assignments.
-	setLineWidth(s.lineWidth);
 	setLineStyle(s.lineStyle);
 	setLineJoin(s.lineJoin);
 
